@@ -1,0 +1,44 @@
+Sistema de Inventario y Ventas
+Un sistema en consola desarrollado en Python y SQLite que permite administrar productos, consultar existencias, registrar ventas y visualizar un historial detallado, asegurando la integridad de la información mediante el uso estricto de transacciones de base de datos.
+Instrucciones de Ejecución
+Pasos para Ejecutar
+1.	Descargar el proyecto:
+Clona el repositorio o descarga el código fuente en tu máquina:
+
+2.	Ejecutar el programa:
+Abre la terminal o consola de comandos dentro de la carpeta del proyecto y ejecuta:
+(Al ejecutarse por primera vez, la aplicación creará automáticamente la base de datos inventario_ventas.db y sus tablas necesarias).
+3.	Uso de la aplicación:
+Aparecerá un menú interactivo en consola con las siguientes opciones:
+○	1: Registrar un nuevo producto (nombre, precio y cantidad inicial).
+○	2: Consultar el inventario disponible.
+○	3: Registrar una venta seleccionando el ID del producto y la cantidad.
+○	4: Ver el historial de ventas con detalles de productos y fechas.
+○	5: Salir de la aplicación.
+
+Análisis de Construcción del Software
+El programa sigue una arquitectura sencilla basada en módulos funcionales de consola, interactuando directamente con una base de datos SQLite embebida en un archivo local (inventario_ventas.db).
+Componentes Principales
+●	Capa de Interfaz de Usuario (Consola): Captura los datos ingresados por el usuario y le muestra los mensajes de confirmación, errores e historial de transacciones.
+●	Capa de Lógica de Negocio (Python): Valida las condiciones antes de realizar cambios (ej. si un producto existe o si hay stock suficiente) y coordina las llamadas SQL.
+●	Capa de Persistencia (SQLite): Guarda de forma persistente los registros de productos y ventas mediante consultas SQL parametrizadas (?) para evitar inyecciones SQL.
+
+Estructura de Tablas (SQL)
+1.	Tabla productos
+○	id (INTEGER PRIMARY KEY AUTOINCREMENT): Identificador único del producto.
+○	nombre (TEXT NOT NULL): Nombre del componente electrónico.
+○	precio (REAL NOT NULL): Precio unitario del producto.
+○	cantidad (INTEGER NOT NULL): Unidades disponibles en stock.
+2.	Tabla ventas
+○	id (INTEGER PRIMARY KEY AUTOINCREMENT): Identificador único de la venta.
+○	producto_id (INTEGER NOT NULL): Clave foránea que referencia a productos(id).
+○	cantidad_vendida (INTEGER NOT NULL): Cantidad de unidades vendidas.
+○	fecha (TEXT NOT NULL): Fecha y hora en la que se realizó la transacción.
+
+
+Pasos dentro del proceso de venta:
+1.	Validación previa: Se verifica que el producto exista y que la cantidad disponible sea suficiente.
+2.	Registro de la venta: Se inserta el nuevo registro en la tabla ventas.
+3.	Descuento de stock: Se resta la cantidad vendida en la tabla productos.
+4.	Confirmación (commit()): Si ambas acciones se completan exitosamente, los cambios se guardan permanentemente en la base de datos.
+5.	Cancelación (rollback()): Si ocurre cualquier fallo inesperado durante la operación (por ejemplo, interrupción del sistema o error de código), el bloque except ejecuta un rollback(), cancelando todas las modificaciones realizadas durante la transacción y manteniendo los datos intactos.
