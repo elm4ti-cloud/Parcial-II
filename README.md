@@ -33,7 +33,10 @@ Consultar la cantidad disponible actual en stock.
 Validar que la cantidad solicitada sea menor o igual al stock disponible.   
 
 
-Insertar el registro correspondiente en la tabla ventas.   
+Insertar el registro correspondiente en la tabla ventas.
+
+<img width="980" height="878" alt="image" src="https://github.com/user-attachments/assets/68ded2f4-71d8-4c82-9562-0ba43f38c901" />
+
 
 
 Actualizar (restar) la cantidad del producto en la tabla productos.   
