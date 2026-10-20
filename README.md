@@ -35,11 +35,17 @@ Validar que la cantidad solicitada sea menor o igual al stock disponible.
 
 Insertar el registro correspondiente en la tabla ventas.
 
-<img width="980" height="878" alt="image" src="https://github.com/user-attachments/assets/68ded2f4-71d8-4c82-9562-0ba43f38c901" />
-
-
-
 Actualizar (restar) la cantidad del producto en la tabla productos.   
 
-
 Aplicar commit() para confirmar los cambios o rollback() si ocurre algún fallo.   
+
+EVIDENCIAS DEL FUNCIONAMIENTO
+
+<img width="980" height="878" alt="image" src="https://github.com/user-attachments/assets/68ded2f4-71d8-4c82-9562-0ba43f38c901" />
+
+<img width="980" height="514" alt="image" src="https://github.com/user-attachments/assets/748666a7-73c7-4299-a8cb-b9965f4f525e" />
+
+ROLLBACK
+
+<img width="980" height="586" alt="image" src="https://github.com/user-attachments/assets/2968a44b-7091-450b-9d3a-462f72dd94a5" />
+
